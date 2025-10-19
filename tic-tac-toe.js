@@ -5,6 +5,15 @@ window.addEventListener('DOMContentLoaded', () => {
 
     squares.forEach((square, index) => {
         square.classList.add('square');
+
+        square.addEventListener("mouseover" , () => {
+            square.classList.add('hover');
+        })
+
+        square.addEventListener("mouseout" , () => {
+            square.classList.remove('hover');
+        })
+
         square.addEventListener('click', () => {
             if (square.textContent === '') {
                 square.textContent = currentPlayer;
@@ -12,7 +21,9 @@ window.addEventListener('DOMContentLoaded', () => {
                 grid[index] = currentPlayer;
                 currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
             }
+
         });
     });
+
 });
         
