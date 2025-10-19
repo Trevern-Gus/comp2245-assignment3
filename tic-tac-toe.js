@@ -1,6 +1,7 @@
 window.addEventListener('DOMContentLoaded', () => {
     const squares = document.querySelectorAll('#board div');
     const status = document.querySelector('#status');
+    const newgame = document.querySelector('.btn');
     let grid = Array(9).fill(null);
     let currentPlayer = 'X';
     let gameOver = false;
@@ -48,4 +49,16 @@ window.addEventListener('DOMContentLoaded', () => {
             return combination.every(index => grid[index] === player);
         });
     }
+
+    newgame.addEventListener('click', () => {
+        grid.fill(null);
+        squares.forEach(square => {
+            square.textContent = '';
+            square.classList.remove('X', 'O', 'hover');
+        });
+        currentPlayer = 'X';
+        gameOver = false;
+        status.textContent = 'Move your mouse over a square and click to play an X or an O.';
+        status.classList.remove('you-won');
+    });
 });
